@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+
+    <title>Air Quality Control</title>
+  </head>
+  <body>
+    <div class="has-background-black">
+      <div class="field has-addons m-3 p-1 is-justify-content-center">
+        <div class="control is-justify-content-center">
+          <input
+            id="search"
+            class="input is-info has-text-black-bis"
+            type="text"
+            placeholder="Enter City and State"
+            aria-label="Search"
+          />
+        </div>
+        <div class="buttons control is-justify-content-center">
+          <a id="search-button" class="button is-info has-text-black-bis">
+            Search
+          </a>
+        </div>
+      </div>
+      <section
+        class="section is-justify-content-center has-text-centered has-outline"
+      >
+        <div class="container">
+          <h2 class="i">
+            <a
+              class="button is-info has-text-weight-bold is-outlined m-1"
+              href="https://bulma.io/documentation/"
+              target="_blank"
+              >API Source#1: BULMA.IO CSS UI API</a
+            >
+          </h2>
+          <h2 class="i">
+            <a
+              class="button is-info has-text-weight-bold is-outlined m-1"
+              href="https://docs.breezometer.com/"
+              target="_blank"
+              >API Source#2: Breezeometer Air Quality API</a
+            >
+          </h2>
+          <h2 class="i">
+            <a
+              class="button is-info has-text-weight-bold is-outlined m-1"
+              href="https://developer.mapquest.com/documentation/searchahead-api/get"
+              target="_blank"
+              >API Source#3: MapQuest Search Ahead API</a
+            >
+          </h2>
+          <p class="subtitle has-text-warning m-2 is-size-4">
+            Our API Journey Begins!<strong class="has-text-danger is-size-3"
+              >Next up! Reactjs lol jk...</strong
+            >!
+          </p>
+          <div id="results" class="container" style="display: none">
+            <div id="result-block" class="notification is-primary">
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=AIzaSyBzkF00G5ICljew4q4Ut3ygR1F2RIMm3Lc"></script>
+    <script src="/assets/js/script.js"></script>
+  </body>
+</html>
