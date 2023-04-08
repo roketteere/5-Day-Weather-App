@@ -8,68 +8,151 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
     />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="/assets/css/style.css" />
 
-    <title>Air Quality Control</title>
+    <title>5 Day Weather App</title>
   </head>
-  <body>
-    <div class="has-background-black">
-      <div class="field has-addons m-3 p-1 is-justify-content-center">
-        <div class="control is-justify-content-center">
-          <input
-            id="search"
-            class="input is-info has-text-black-bis"
-            type="text"
-            placeholder="Enter City and State"
-            aria-label="Search"
-          />
-        </div>
-        <div class="buttons control is-justify-content-center">
-          <a id="search-button" class="button is-info has-text-black-bis">
-            Search
-          </a>
-        </div>
-      </div>
-      <section
-        class="section is-justify-content-center has-text-centered has-outline"
-      >
-        <div class="container">
-          <h2 class="i">
-            <a
-              class="button is-info has-text-weight-bold is-outlined m-1"
-              href="https://bulma.io/documentation/"
-              target="_blank"
-              >API Source#1: BULMA.IO CSS UI API</a
-            >
-          </h2>
-          <h2 class="i">
-            <a
-              class="button is-info has-text-weight-bold is-outlined m-1"
-              href="https://docs.breezometer.com/"
-              target="_blank"
-              >API Source#2: Breezeometer Air Quality API</a
-            >
-          </h2>
-          <h2 class="i">
-            <a
-              class="button is-info has-text-weight-bold is-outlined m-1"
-              href="https://developer.mapquest.com/documentation/searchahead-api/get"
-              target="_blank"
-              >API Source#3: MapQuest Search Ahead API</a
-            >
-          </h2>
-          <p class="subtitle has-text-warning m-2 is-size-4">
-            Our API Journey Begins!<strong class="has-text-danger is-size-3"
-              >Next up! Reactjs lol jk...</strong
-            >!
+  <body class="column">
+    <h1
+      class="column notification has-background-link has-text-white-bis is-size-2 has-text-centered has-text-weight-bold"
+    >
+      Weather Dashboard
+    </h1>
+    <div class="columns p-0 has-text-left">
+      <nav class="column is-one-quarter panel is-primary">
+        <p class="panel-heading is-size-4 has-text-left pl-2">
+          Search For A City:
+        </p>
+        <div class="panel-block m-0 pr-0 pl-0">
+          <p class="control has-icons-left">
+            <input
+              class="input has-text-weight-bold has-background-danger-light m-0"
+              type="text"
+              placeholder="Search"
+            />
           </p>
-          <div id="results" class="container" style="display: none">
-            <div id="result-block" class="notification is-primary">
+        </div>
+        <div class="panel-block m-0 p-0">
+          <button class="button is-link is-fullwidth">Search</button>
+        </div>
+        <a class="panel-block has-background-danger-light m-1">
+          <span class="panel-icon">
+            <i class="fas fa-book" aria-hidden="true"></i>
+          </span>
+          Atlanta
+        </a>
+        <a class="panel-block has-background-danger-light m-1">
+          <span class="panel-icon">
+            <i class="fas fa-book" aria-hidden="true"></i>
+          </span>
+          Denver
+        </a>
+        <a class="panel-block has-background-danger-light m-1">
+          <span class="panel-icon">
+            <i class="fas fa-book" aria-hidden="true"></i>
+          </span>
+          Seattle
+        </a>
+        <a class="panel-block has-background-danger-light m-1">
+          <span class="panel-icon">
+            <i class="fas fa-book" aria-hidden="true"></i>
+          </span>
+          San Francisco
+        </a>
+        <a class="panel-block has-background-danger-light m-1">
+          <span class="panel-icon">
+            <i class="fas fa-code-branch" aria-hidden="true"></i>
+          </span>
+          Orlando
+        </a>
+        <a class="panel-block has-background-danger-light m-1">
+          <span class="panel-icon">
+            <i class="fas fa-code-branch" aria-hidden="true"></i>
+          </span>
+          New York
+        </a>
+        <a class="panel-block has-background-danger-light m-1">
+          <span class="panel-icon">
+            <i class="fas fa-code-branch" aria-hidden="true"></i>
+          </span>
+          Chicago
+        </a>
+        <a class="panel-block has-background-danger-light m-1">
+          <span class="panel-icon">
+            <i class="fas fa-code-branch" aria-hidden="true"></i>
+          </span>
+          Austin
+        </a>
+      </nav>
+      <div class="column panel is-three-quarters">
+        <div class="box">
+          <div class="card box-border">
+            <div class="card-header">
+              <p class="card-header-title is-size-3">
+                Atlanta <span id="date-time" class="p-1">(9/13/2022)</span>
+              </p>
+            </div>
+            <div class="card-content">
+              <div class="content">
+                <p id="temp">Temp:<span class="temp">76.52F</span></p>
+                <p id="wind">Wind:<span class="wind">8.43 MPH</span></p>
+                <p id="humidity">Temp: <span class="humidity">44 %</span></p>
+              </div>
+            </div>
+          </div>
+          <br />
+          <p class="subtitle">5-Day-Forecast:</p>
+          <div class="box columns">
+            <div
+              class="card column has-background-black has-text-white-bis has-text-left p-4 m-1"
+            >
+              <p>9/14/2022</p>
+              <i>Icon</i>
+              <p>Temp:<span class="temp-card">76.52F</span></p>
+              <p>Wind:<span class="wind-card">8.43 MPH</span></p>
+              <p>Temp: <span class="humidity-card">44 %</span></p>
+            </div>
+            <div
+              class="card column has-background-black has-text-white-bis has-text-left p-4 m-1"
+            >
+              <p>9/14/2022</p>
+              <i>Icon</i>
+              <p>Temp:<span class="temp-card">76.52F</span></p>
+              <p>Wind:<span class="wind-card">8.43 MPH</span></p>
+              <p>Temp: <span class="humidity-card">44 %</span></p>
+            </div>
+            <div
+              class="card column has-background-black has-text-white-bis has-text-left p-4 m-1"
+            >
+              <p>9/14/2022</p>
+              <i>Icon</i>
+              <p>Temp:<span class="temp-card">76.52F</span></p>
+              <p>Wind:<span class="wind-card">8.43 MPH</span></p>
+              <p>Temp: <span class="humidity-card">44 %</span></p>
+            </div>
+            <div
+              class="card column has-background-black has-text-white-bis has-text-left p-4 m-1"
+            >
+              <p>9/14/2022</p>
+              <i>Icon</i>
+              <p>Temp:<span class="temp-card">76.52F</span></p>
+              <p>Wind:<span class="wind-card">8.43 MPH</span></p>
+              <p>Temp: <span class="humidity-card">44 %</span></p>
+            </div>
+            <div
+              class="card column has-background-black has-text-white-bis has-text-left p-4 m-1"
+            >
+              <p>9/14/2022</p>
+              <i>Icon</i>
+              <p>Temp:<span class="temp-card">76.52F</span></p>
+              <p>Wind:<span class="wind-card">8.43 MPH</span></p>
+              <p>Temp: <span class="humidity-card">44 %</span></p>
             </div>
           </div>
         </div>
-      </section>
+      </div>
     </div>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=AIzaSyBzkF00G5ICljew4q4Ut3ygR1F2RIMm3Lc"></script>
     <script src="/assets/js/script.js"></script>
