@@ -4,4 +4,4 @@
 
 5 Day Weather Forecast Web App
 
-[!5 Day Weather Map Screenshot]
+![5 Day Weather Map Screenshot](./assets/img/kitten.jpeg)
