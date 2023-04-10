@@ -1,4 +1,5 @@
 var cities = [];
+var weatherURL = `http://api.openweathermap.org/geo/1.0/direct?q=London&limit=5&appid=`
 
 
 var searchButton = document.querySelector("#search-button");
