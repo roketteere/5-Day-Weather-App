@@ -18,83 +18,47 @@
     >
       Weather Dashboard
     </h1>
+
     <div class="columns p-0 has-text-left">
-      <nav class="column is-one-quarter panel is-primary">
-        <p class="panel-heading is-size-4 has-text-left pl-2">
+      <nav class="column is-one-quarter panel">
+        <p
+          class="panel-heading is-size-4 has-text-left pl-2 has-background-primary"
+        >
           Search For A City:
         </p>
         <a><span></span><i></i></a>
         <div class="panel-block m-0 pr-0 pl-0">
           <p class="control has-icons-left">
             <input
-              class="input has-text-weight-bold has-background-danger-light m-0"
+              id="search-box"
+              class="input has-background-white m-0 search-box"
               type="text"
               placeholder="Search"
             />
           </p>
         </div>
         <div class="panel-block sibling-below m-0 p-0">
-          <button class="button is-link is-fullwidth">Search</button>
+          <button
+            id="search-button"
+            class="button is-link is-fullwidth search-button"
+          >
+            Search
+          </button>
         </div>
-
-        <div class="dropdown-content overflow city-blocks">
-          <a class="panel-block block-1 has-background-danger-light m-1">
-            <span class="panel-icon"> </span>
-            Atlanta
-          </a>
-          <a class="panel-block block-2 has-background-danger-light m-1">
-            <span class="panel-icon"> </span>
-            Denver </a
-          ><a class="panel-block has-background-danger-light m-1">
-            <span class="panel-icon">
-              <i class="fas fa-book" aria-hidden="true"></i>
-            </span>
-            Denver
-          </a>
-          <a class="panel-block has-background-danger-light m-1">
-            <span class="panel-icon">
-              <i class="fas fa-book" aria-hidden="true"></i>
-            </span>
-            Seattle
-          </a>
-          <a class="panel-block has-background-danger-light m-1">
-            <span class="panel-icon">
-              <i class="fas fa-book" aria-hidden="true"></i>
-            </span>
-            San Francisco
-          </a>
-          <a class="panel-block has-background-danger-light m-1">
-            <span class="panel-icon">
-              <i class="fas fa-code-branch" aria-hidden="true"></i>
-            </span>
-            Orlando
-          </a>
-          <a class="panel-block has-background-danger-light m-1">
-            <span class="panel-icon">
-              <i class="fas fa-code-branch" aria-hidden="true"></i>
-            </span>
-            New York
-          </a>
-          <a class="panel-block has-background-danger-light m-1">
-            <span class="panel-icon">
-              <i class="fas fa-code-branch" aria-hidden="true"></i>
-            </span>
-            Chicago
-          </a>
-          <a class="panel-block has-background-danger-light m-1">
-            <span class="panel-icon">
-              <i class="fas fa-code-branch" aria-hidden="true"></i>
-            </span>
-            Austin
-          </a>
+        <div
+          id="table"
+          class="table-container pt-2"
+          style="height: 50vh; overflow-y: auto"
+        >
+          <!-- <p class="button is-light is-warning is-fullwidth is-size-5">Miami</p> -->
         </div>
       </nav>
       <div class="column panel is-three-quarters">
         <div class="box">
           <div class="card box-border">
             <div class="card-header">
-              <p class="card-header-title is-size-3">
-                Atlanta <span id="date-time" class="p-1">(9/13/2022)</span>
+              <p class="card-header-title is-size-3 main-city">
+                Atlanta <span id="date-time" class="p-1"></span>
               </p>
             </div>
             <div class="card-content">
@@ -112,7 +76,7 @@
               class="card column has-background-black has-text-white-bis has-text-left p-4 m-1"
             >
               <p>9/14/2022</p>
-              <i>Icon</i>
+              <i>i</i>
               <p>Temp:<span class="temp-card">76.52F</span></p>
               <p>Wind:<span class="wind-card">8.43 MPH</span></p>
               <p>Temp: <span class="humidity-card">44 %</span></p>
@@ -160,6 +124,7 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=AIzaSyBzkF00G5ICljew4q4Ut3ygR1F2RIMm3Lc"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
     <script src="/assets/js/script.js"></script>
   </body>
 </html>

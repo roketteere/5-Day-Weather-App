@@ -1,133 +1,96 @@
-var cities = [];
+// holds all search history
+var searchHistory = [];
 
-
+// query selector for all dynamically needed elements
 var searchButton = document.querySelector("#search-button");
-var searchBox = document.querySelector("#search");
-var resultContainer = document.querySelector("#results");
-
-var resultBlock = document.querySelector("#result-block");
-
-// TODO Create dropdown list to select city so that we can take the city and pass it to the Geocoding API
-
-// Fetch function to get our data, slice what we need for each item in the results found
-function fetchMapData(keyword) {
-
-    fetch(`https://www.mapquestapi.com/search/v3/prediction?key=ceiWumpWrG5aqAOi4bsRb8BIkjPl3vtP&limit=5&collection=address,city&q=${keyword}`).then(promise => promise.json()).then(data => { // JSON.stringify(data);
-
-        console.log(data.results)
-
-        for (var i = 0; i < data.results.length; i++) {
-            var listCity = data.results[i].name;
-            var city = data.results[i].name;
-
-            var state = data.results[i].place.properties.state;
+var searchBox = document.querySelector("#search-box");
+var dateTime = document.querySelector("#date-time");
+var table = document.querySelector("#table");
+var cityName = ''
 
 
-            var longitude = data.results[i].place.geometry.coordinates[0];
-
-
-            var latitude = data.results[i].place.geometry.coordinates[1];
-
-            var resultList = document.createElement("option");
-            resultList.text = listCity;
-            resultList.value = listCity;
-            resultBlock.appendChild(resultList);
-            resultContainer.setAttribute("style", "display:block;");
-            getWeatherAPI(longitude, latitude);
-
-            cities.push([city, state, longitude, latitude]);
-
-            // console.log('Last Log: \n' + cities[i]);
-            console.log(`City: ${city}\nState: ${state}\nLongitude: ${longitude}\nLatitude: ${latitude}`)
-
-
-        }
-
-
-    });
-}
-
-function getWeatherAPI(city) {
-    var API_KEY = '501097da5c0ccc04bda86f2d077d16bb';
-
-    var API_URL = `http://api.openweathermap.org/geo/1.0/direct?q=${city}limit=5&appid=${API_KEY}`
-
-
-    fetch(API_URL).then(api => api.json()).then(api_data => {
-        console.log(`City Name:${
-            api_data[0].name
-        }\nLongitude:${
-            api_data[0].lon
-        }\nLatitude:${
-            api_data[0].lat
-        }`);
-    });
+// time function to update set time/date format
+function time() {
+    dateTime.textContent = dayjs().format(": MMM DD, YYYY h:mma (ss)");
+    // takes itself as a parameter so it calls itself every sec
 
 
 }
+// Set date
+time();
+setInterval(time, 1000);
 
-resultContainer.addEventListener('click', function (event) {
-    var city = event.target.value
-    // console.log('CITY CLICKED: ', city);
-    getWeatherAPI(city)
+// gets and returns input text from user
+function getCityName(input_element) {
+    return input_element.textContent;
+}
+// add search input to search history and append element
+function addToHistory(cityName) {
+    searchHistory.push(cityName);
+    var city = document.createElement("p")
+    city.className = "button is-light is-warning is-fullwidth is-size-5"
+    city.innerHTML = cityName
+    table.appendChild(city);
+    return cityName;
 
+}
+// load history from localStorage
+function loadHistory(global_history) {
+    global_history.push(localStorage.getItem('city-history'))
+    if (global_history.length === 0) {
+        console.log('NO HISTORY TO LOAD!');
+
+    } else 
+        console.log('HISTORY LOADED!');
+    
+
+
+    for (var i = 0; i < global_history.length; i++) {
+        addToHistory(global_history[i]);
+    }
+
+}
+// Save search history to local storage
+function saveHistory(global_history) {
+    if (localStorage.setItem('city-history', global_history)) {
+        console.log('HISTORY SAVED SUCCESSFULLY');
+
+    }
+}
+// add event listener to search box
+searchBox.addEventListener('keydown', function (event) {
+    var inputEl = event.target;
+    cityName = inputEl.value;
+    console.log(cityName);
 
 })
-// Event listener for the search button. If the user hasn't typed anything it, it will display an alert letting them know they need to enter search parameters first. This way they can't use up API requests unnecessarily. We pass in
-searchButton.addEventListener('click', function (event) {
-    var info = searchBox.value;
-
-    if (info === undefined) {
-        alert("No Input Detected")
-        return
-    } else {
-        event.target
-
-        fetchMapData(info)
-
-
-    }
-
-    var info = searchBox.value;
-    if (info === undefined) {
-        return
-    } else {
-        event.target
-
-        fetchMapData(info)
-
-
-    }
-
-
-});
-
-searchBox.addEventListener('keydown', function (event) {
-    var info = searchBox.value;
-    if (info === undefined) {
-
-        return
-    } else {
-        event.target
-
-        fetchMapData(info)
-
-
-    }
-
-});
-
+// add event listener to search box
 searchBox.addEventListener('keyup', function (event) {
-    var info = searchBox.value;
+    var inputEl = event.target;
+    cityName = inputEl.value;
+    console.log(cityName);
 
-    fetchMapData(info)
-    event.target
+})
+// on keyboard enter, search
+searchBox.addEventListener('keypress', function (event) {
+
+    if (event.key === "Enter") {
+        addToHistory(event.target.value);
+        saveHistory(searchHistory);
+        console.log('::KEYBOARD:: City Saved To History: ', cityName);
+        searchBox.value = ''
+
+    }
+
+})
+
+// click event listener for search button
+searchButton.addEventListener('click', function (event) {
+    event.target;
+    addToHistory(cityName);
+    saveHistory(searchHistory);
+    console.log('City Saved To History: ', cityName);
+    searchBox.value = ''
+
+
 });
-
-function createCards() {
-    var card = document.createElement("a");
-    var cardIcon = document.createElement("span");
-    var cardITag = document.createElement("i")
-
-
-}
