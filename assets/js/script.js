@@ -26,6 +26,7 @@ function getCityName(input_element) {
 }
 // add search input to search history and append element
 function addToHistory(cityName) {
+    getWeatherAPI(cityName)
     searchHistory.push(cityName);
     var city = document.createElement("p")
     city.className = "button is-light is-warning is-fullwidth is-size-5"
@@ -57,6 +58,26 @@ function saveHistory(global_history) {
 
     }
 }
+
+function getWeatherAPI(city) {
+    var API_KEY = '501097da5c0ccc04bda86f2d077d16bb';
+
+    var API_URL = `http://api.openweathermap.org/geo/1.0/direct?q=${city}limit=5&appid=${API_KEY}`
+
+
+    fetch(API_URL).then(api => api.json()).then(api_data => {
+        console.log(`City Name:${
+            api_data[0].name
+        }\nLongitude:${
+            api_data[0].lon
+        }\nLatitude:${
+            api_data[0].lat
+        }`);
+    });
+
+
+}
+
 // add event listener to search box
 searchBox.addEventListener('keydown', function (event) {
     var inputEl = event.target;
