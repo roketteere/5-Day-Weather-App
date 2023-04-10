@@ -45,7 +45,6 @@ function loadHistory(global_history) {
         console.log('HISTORY LOADED!');
     
 
-
     for (var i = 0; i < global_history.length; i++) {
         addToHistory(global_history[i]);
     }
