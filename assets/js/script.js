@@ -8,6 +8,24 @@ var dateTime = document.querySelector("#date-time");
 var table = document.querySelector("#table");
 var cityName = ''
 
+function getWeatherAPI(city) {
+    var API_KEY = '501097da5c0ccc04bda86f2d077d16bb';
+
+    var API_URL = `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=${API_KEY}`
+
+
+    fetch(API_URL).then(api => api.json()).then(api_data => {
+        console.log(`City Name:${
+            api_data[0].name
+        }\nLongitude:${
+            api_data[0].lon
+        }\nLatitude:${
+            api_data[0].lat
+        }`);
+    });
+
+
+}
 
 // time function to update set time/date format
 function time() {
@@ -45,6 +63,7 @@ function loadHistory(global_history) {
         console.log('HISTORY LOADED!');
     
 
+
     for (var i = 0; i < global_history.length; i++) {
         addToHistory(global_history[i]);
     }
@@ -64,15 +83,7 @@ function getWeatherAPI(city) {
     var API_URL = `http://api.openweathermap.org/geo/1.0/direct?q=${city}limit=5&appid=${API_KEY}`
 
 
-    fetch(API_URL).then(api => api.json()).then(api_data => {
-        console.log(`City Name:${
-            api_data[0].name
-        }\nLongitude:${
-            api_data[0].lon
-        }\nLatitude:${
-            api_data[0].lat
-        }`);
-    });
+    fetch(API_URL).then(api => api.json()).then(console.log(api));
 
 
 }
@@ -95,6 +106,7 @@ searchBox.addEventListener('keyup', function (event) {
 searchBox.addEventListener('keypress', function (event) {
 
     if (event.key === "Enter") {
+        getWeatherAPI(cityName);
         addToHistory(event.target.value);
         saveHistory(searchHistory);
         console.log('::KEYBOARD:: City Saved To History: ', cityName);

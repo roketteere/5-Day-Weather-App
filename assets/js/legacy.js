@@ -59,7 +59,7 @@ function fetchMapData(keyword) {
 function getWeatherAPI(city) {
     var API_KEY = '501097da5c0ccc04bda86f2d077d16bb';
 
-    var API_URL = `http://api.openweathermap.org/geo/1.0/direct?q=${city}limit=5&appid=${API_KEY}`
+    var API_URL = `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=${API_KEY}`
 
 
     fetch(API_URL).then(api => api.json()).then(api_data => {
