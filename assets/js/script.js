@@ -1,5 +1,6 @@
 // holds all search history
 var searchHistory = [];
+var currentLocation = [];
 
 // query selector for all dynamically needed elements
 var searchButton = document.querySelector("#search-button");
@@ -8,12 +9,37 @@ var dateTime = document.querySelector("#date-time");
 var table = document.querySelector("#table");
 var cityName = ''
 
+
+// get current weather based on current location
+function getLocalConditions(lat, lon) {
+    var MapQuestAPI = new URL(`https://www.mapquestapi.com/geocoding/v1/reverse?key=ceiWumpWrG5aqAOi4bsRb8BIkjPl3vtP&location=${lon},${lat}&includeRoadMetadata=true&includeNearestIntersection=true`)
+
+    fetch(MapQuestAPI).then(response => response.json()).then(data => {
+        console.log('Data Received: ', data)
+    })
+
+}
+
+// get current geolocation
+function getCurrentGeo(location) {
+    navigator.geolocation.getCurrentPosition((position) => {
+        location.push(position.coords.latitude)
+        location.push(position.coords.longitude)
+        console.log(`Latitude: ${
+            location[0]
+        }\nLongitude: ${
+            location[1]
+        }`)
+        return location[0],
+        location[1]
+
+    })
+}
+
+// Get Weather API data
 function getWeatherAPI(city) {
     var API_KEY = '501097da5c0ccc04bda86f2d077d16bb';
-
     var API_URL = `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=${API_KEY}`
-
-
     fetch(API_URL).then(api => api.json()).then(api_data => {
         console.log(`City Name:${
             api_data[0].name
@@ -79,17 +105,11 @@ function saveHistory(global_history) {
 
 function getWeatherAPI(city) {
     var API_KEY = '501097da5c0ccc04bda86f2d077d16bb';
-
     var API_URL = `http://api.openweathermap.org/geo/1.0/direct?q=${city}limit=5&appid=${API_KEY}`
-
-
     fetch(API_URL).then(api => api.json()).then(data => {
         console.log(data);
     });
-
-
 }
-
 
 // add event listener to search box
 searchBox.addEventListener('keydown', function (event) {
@@ -129,3 +149,6 @@ searchButton.addEventListener('click', function (event) {
 
 
 });
+// getLocalConditions()
+getCurrentGeo(currentLocation)
+getLocalConditions(currentLocation[0], currentLocation[1]);
