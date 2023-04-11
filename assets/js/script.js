@@ -13,21 +13,13 @@ var resultBlock = document.querySelector("#result-block");
 function fetchMapData(keyword) {
 
     fetch(`https://www.mapquestapi.com/search/v3/prediction?key=ceiWumpWrG5aqAOi4bsRb8BIkjPl3vtP&limit=5&collection=address,city&q=${keyword}`).then(promise => promise.json()).then(data => { // JSON.stringify(data);
-
         console.log(data.results)
-
         for (var i = 0; i < data.results.length; i++) {
             var listCity = data.results[i].name;
             var city = data.results[i].name;
-
             var state = data.results[i].place.properties.state;
-
-
             var longitude = data.results[i].place.geometry.coordinates[0];
-
-
             var latitude = data.results[i].place.geometry.coordinates[1];
-
             var resultList = document.createElement("option");
             resultList.text = listCity;
             resultList.value = listCity;
@@ -39,20 +31,13 @@ function fetchMapData(keyword) {
 
             // console.log('Last Log: \n' + cities[i]);
             console.log(`City: ${city}\nState: ${state}\nLongitude: ${longitude}\nLatitude: ${latitude}`)
-
-
         }
-
-
     });
 }
 
 function getWeatherAPI(city) {
     var API_KEY = '501097da5c0ccc04bda86f2d077d16bb';
-
     var API_URL = `http://api.openweathermap.org/geo/1.0/direct?q=${city}limit=5&appid=${API_KEY}`
-
-
     fetch(API_URL).then(api => api.json()).then(api_data => {
         console.log(`City Name:${
             api_data[0].name
@@ -63,9 +48,7 @@ function getWeatherAPI(city) {
         }`);
     });
 
-
 }
-
 resultContainer.addEventListener('click', function (event) {
     var city = event.target.value
     // console.log('CITY CLICKED: ', city);
