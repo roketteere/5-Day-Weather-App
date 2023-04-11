@@ -83,7 +83,9 @@ function getWeatherAPI(city) {
     var API_URL = `http://api.openweathermap.org/geo/1.0/direct?q=${city}limit=5&appid=${API_KEY}`
 
 
-    fetch(API_URL).then(api => api.json()).then(console.log(api));
+    fetch(API_URL).then(api => api.json()).then(data => {
+        console.log(data);
+    });
 
 
 }
@@ -105,7 +107,7 @@ searchBox.addEventListener('keyup', function (event) {
 })
 // on keyboard enter, search
 searchBox.addEventListener('keypress', function (event) {
-
+    event.target
     if (event.key === "Enter") {
         getWeatherAPI(cityName);
         addToHistory(event.target.value);

@@ -48,6 +48,20 @@ function fetchMapData(keyword) {
 
             // console.log('Last Log: \n' + cities[i]);
             console.log(`City: ${city}\nState: ${state}\nLongitude: ${longitude}\nLatitude: ${latitude}`)
+            // for (var i = 0; i < data.results.length; i++) {
+            //     var listCity = data.results[i].name;
+            //     var city = data.results[i].name;
+            //     var state = data.results[i].place.properties.state;
+            //     var longitude = data.results[i].place.geometry.coordinates[0];
+            //     var latitude = data.results[i].place.geometry.coordinates[1];
+            //     var resultList = document.createElement("p");
+            // resultList.text = listCity;
+            // resultList.value = listCity;
+            // resultBlock.appendChild(resultList);
+            // resultContainer.setAttribute("style", "display:block;");
+            // cities.push([city, state, longitude, latitude]);
+            // console.log('Last Log: \n' + cities[i]);
+            // console.log(`City: ${city}\nState: ${state}\nLongitude: ${longitude}\nLatitude: ${latitude}`)
 
 
         }
