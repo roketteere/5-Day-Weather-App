@@ -88,6 +88,7 @@ function getWeatherAPI(city) {
 
 }
 
+
 // add event listener to search box
 searchBox.addEventListener('keydown', function (event) {
     var inputEl = event.target;

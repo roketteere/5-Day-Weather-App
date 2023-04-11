@@ -1,11 +1,11 @@
 var cities = [];
 
 
-var searchButton = document.querySelector(".search-button");
-var searchBox = document.querySelector(".search-box");
+var searchButton = document.querySelector("#search-button");
+var searchBox = document.querySelector("#search-box");
 var resultContainer = document.querySelector("#results");
 var dateTime = document.querySelector("#date-time");
-var resultBlock = document.querySelector("#result-block");
+var resultBlock = document.querySelector("#table");
 
 function time() {
     dateTime.textContent = dayjs().format(": MMM DD, YYYY h:mma (ss)");
@@ -78,7 +78,7 @@ function getWeatherAPI(city) {
 resultContainer.addEventListener('click', function (event) {
     var city = event.target.value
     // console.log('CITY CLICKED: ', city);
-    getWeatherAPI(city)
+    fetchMapData(city)
 
 
 })
